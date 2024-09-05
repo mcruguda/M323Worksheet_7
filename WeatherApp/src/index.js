@@ -89,14 +89,13 @@ function update(message, model, dispatch, value) {
       };
 
     case messages.ADD_LOCATION: {
-      console.log(value);
       const newWeather = {...model.currentWeather, temp: value.temp, low: value.minTemp, high: value.maxTemp};
       if (newWeather.location.trim() === "") return model;
       const weatherList = [...model.weatherList, newWeather];
       return {
         ...model,
         weatherList,
-        currentWeather: { location: "", temp: 0, low: 0, max:0 },
+        currentWeather: { location: "" },
       };
     }
 
@@ -127,7 +126,7 @@ function app(initialModel, update, view, node) {
 
 const initialModel = {
   weatherList: [],
-  currentWeather: { location: "", temp: 0, low: 0, high: 0 },
+  currentWeather: { location: "" },
 };
 
 const rootNode = document.getElementById("app");
